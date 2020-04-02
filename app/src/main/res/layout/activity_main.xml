@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="userVM"
+            type="com.parasde.example.mvvm.viewmodel.UserViewModel" />
+        <variable
+            name="todoVM"
+            type="com.parasde.example.mvvm.viewmodel.TodoViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:context=".ui.MainActivity">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@{userVM.id}" />
+
+        <TextView
+            android:id="@+id/userNameTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@{userVM.contact}" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:hint="User ID"
+            android:afterTextChanged="@{(editable)->userVM.setUserId(editable)}"
+            android:singleLine="true"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:hint="User Name"
+            android:afterTextChanged="@{(editable)->userVM.setUserName(editable)}"
+            android:singleLine="true"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:hint="Contact"
+            android:afterTextChanged="@{(editable)->userVM.setUserContact(editable)}"
+            android:singleLine="true"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:background="@color/colorPrimary"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:hint="ToDo TITLE"
+            android:text="@={todoVM.todo.title}"
+            android:singleLine="true"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:hint="ToDo Content"
+            android:text="@={todoVM.todo.content}"
+            android:singleLine="true"/>
+
+        <Button
+            android:onClick="@{()->todoVM.showToast()}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SHOW"/>
+    </LinearLayout>
+</layout>
